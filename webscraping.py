@@ -6,4 +6,9 @@ url = "https://www.newegg.ca/p/pl?N=100007708%204814%20601292088%20601292090&cm_
 
 result = requests.get(url)
 doc = BeautifulSoup(result.text, "html.parser")
-print(doc.prettify())
+
+prices = doc.find_all(text="$")
+parent = prices[0].parent
+print(parent)
+strong = parent.find("strong")
+print(strong)
